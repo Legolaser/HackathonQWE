@@ -18,11 +18,14 @@ $(document).ready(function () {
             iconUrl: 'images/Bod.png',
 
             iconSize:     [32, 32], // size of the icon
-            iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+            iconAnchor:   [16, 0], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
         });
 
-        L.marker([currentLocation.coords.latitude, currentLocation.coords.longitude], {icon: greenIcon}).addTo(mymap);
+        var player = L.marker([currentLocation.coords.latitude, currentLocation.coords.longitude], {icon: greenIcon}).addTo(mymap);
+        //player.bindPopup("<b>nazev itemu</b><br>btn pro tezbu/loot")
+        
+        getNearbyPois();
     }
     
     function getLocation() {
@@ -34,6 +37,11 @@ $(document).ready(function () {
         });
     }
     
+    function getNearbyPois() {
+        
+    }
+    
     getLocation();
+    
 });
 
