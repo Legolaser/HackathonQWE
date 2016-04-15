@@ -18,14 +18,20 @@ and open the template in the editor.
             
         
         
-            <img style="float: left" id="imgKamen" src="images/Drevo.png" alt="Kamen" height="60" width="60"> <p id="kamen"></p> 
+            <img style="float: left" id="imgKamen" src="images/kamen.png" alt="Kamen" height="60" width="60"> <p id="kamen"></p> 
             <p id="kamen"></p>
-            <img style="float: left" id="imgDrevo" src="images/Sekera.png" alt="Kamen" height="60" width="60"> <p id="drevo"></p> 
+            <img style="float: left" id="imgDrevo" src="images/Drevo.png" alt="Kamen" height="60" width="60"> <p id="drevo"></p> 
             <p id="drevo"></p>
-            <img style="float: left" id="imgSekera" src="images/Drevo.png" alt="Kamen" height="60" width="60"> <p id="sekera"></p> 
+            <img style="float: left" id="imgSekera" src="images/Sekera.png" alt="Kamen" height="60" width="60"> <p id="sekera"></p> 
             <p id="sekera"></p>
-            <img style="float: left" id="imgNuz" src="images/Drevo.png" alt="Kamen" height="60" width="60"> <p id="nuz"></p> 
+            <img style="float: left" id="imgNuz" src="images/nuz.png" alt="Kamen" height="60" width="60"> <p id="nuz"></p> 
             <p id="nuz"></p>
+            <img style="float: left" id="imgPuska" src="images/nuz.png" alt="Kamen" height="60" width="60"> <p id="puska"></p> 
+            <p id="puska"></p>
+            <img style="float: left" id="imgPistol" src="images/nuz.png" alt="Kamen" height="60" width="60"> <p id="pistol"></p> 
+            <p id="pistol"></p>
+            <img style="float: left" id="imgBoxer" src="images/Boxer.png" alt="Kamen" height="60" width="60"> <p id="boxer"></p> 
+            <p id="boxer"></p>
         
             <div data-role="footer">
                 <div data-role="controlgroup" data-type="horizontal">
@@ -45,7 +51,7 @@ and open the template in the editor.
                 opotrebeni: 5
                 };
 
-                var drevo = {
+            var drevo = {
                 sila:12,
                 stamina: 12,
                 opotrebeni: 5
@@ -62,11 +68,33 @@ and open the template in the editor.
                 stamina: 10,
                 opotrebeni: 5
             };
+            
+            var pistol = {
+                sila:15,
+                stamina: 10,
+                opotrebeni: 5
+            };
+            
+            var puska = {
+                sila:15,
+                stamina: 10,
+                opotrebeni: 5
+            };
+            
+            var boxer = {
+                sila:15,
+                stamina: 10,
+                opotrebeni: 5
+            };
 
-            document.getElementById("kamen").innerHTML = 'Sila: ' + kamen.sila + '<br> Stamina: ' + kamen.stamina + '<br> Opotrebeni: ' + kamen.opotrebeni;
-            document.getElementById("drevo").innerHTML = 'Sila: ' + drevo.sila + '<br> Stamina: ' + drevo.stamina + '<br> Opotrebeni: ' + drevo.opotrebeni;
-            document.getElementById("sekera").innerHTML = 'Sila: ' + sekera.sila + '<br> Stamina: ' + sekera.stamina + '<br> Opotrebeni: ' + sekera.opotrebeni;
-            document.getElementById("nuz").innerHTML = 'Sila: ' + nuz.sila + '<br> Stamina: ' + nuz.stamina + '<br> Opotrebeni: ' + nuz.opotrebeni;
+            document.getElementById("kamen").innerHTML = 'Poskozeni: ' + kamen.sila + '<br> Stamina: ' + kamen.stamina + '<br> Opotrebeni: ' + kamen.opotrebeni;
+            document.getElementById("drevo").innerHTML = 'Poskozeni: ' + drevo.sila + '<br> Stamina: ' + drevo.stamina + '<br> Opotrebeni: ' + drevo.opotrebeni;
+            document.getElementById("sekera").innerHTML = 'Poskozeni: ' + sekera.sila + '<br> Stamina: ' + sekera.stamina + '<br> Opotrebeni: ' + sekera.opotrebeni;
+            document.getElementById("nuz").innerHTML = 'Poskozeni: ' + nuz.sila + '<br> Stamina: ' + nuz.stamina + '<br> Opotrebeni: ' + nuz.opotrebeni;
+            document.getElementById("pistol").innerHTML = 'Poskozeni: ' + pistol.sila + '<br> Stamina: ' + pistol.stamina + '<br> Opotrebeni: ' + pistol.opotrebeni;
+            document.getElementById("puska").innerHTML = 'Poskozeni: ' + puska.sila + '<br> Stamina: ' + puska.stamina + '<br> Opotrebeni: ' + puska.opotrebeni;
+            document.getElementById("boxer").innerHTML = 'Poskozeni: ' + boxer.sila + '<br> Stamina: ' + boxer.stamina + '<br> Opotrebeni: ' + boxer.opotrebeni;
+            
     </script>
             
     </body>

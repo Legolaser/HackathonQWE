@@ -6,97 +6,13 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
- <body>
-
-        <div data-role="page" id="page1" class="app">
-
-            <div data-role="header">
-                <h1>Craft</h1>
-            </div>
-
-            
-            <div data-role="content">
-                <a href="#addDialog" data-icon="add" data-role="button" class="ui-btn ui-icon-add ui-btn-icon-right ui-corner-all" data-rel="dialog" id="addTask">Add Item</a>
-                <a href="#removeDialog" data-icon="delete" class="ui-btn ui-icon-delete ui-btn-icon-right ui-corner-all" data-role="button" data-rel="dialog" onClick="clear();" id="removeAll">Remove All</a>
-            </div>
-
-            <div data-role="footer">
-                <ul data-role="listview" data-inset="true" data-split-icon="minus" data-split-theme="d" id="routerList" data-filter="true" data-filter-placeholder="Search ..."></ul>
-
-            </div>
-            
-            
-            <div data-role="footer">
-
-               <div data-role="controlgroup" data-type="horizontal">
-                    <a href="Menu.html"  data-role="button"><img src="images/1Menu.png" height="42" width="42"/></a>
-                    <a href="info-postavy.html" data-role="button"><img src="images/2postava.png" height="42" width="42"/></a>
-                    <a href="index.html" data-role="button"><img src="images/3Mapa.png" height="42" width="42" /></a>
-                    <a href="inventory.html" data-role="button"><img src="images/4Inventar.png" height="42" width="42"/></a>
-                    <a href="Craft.html" data-role="button"><img src="images/5Crafting.png" height="42" width="42"/></a>
-                </div> 
-            </div><!--footer-->
+    <body>
+        <div data-role="header">
+                <h1>Inventory</h1>
         </div>
-
-        <div data-role="dialog" id="addDialog" data-title="Router">
-
-            <div data-role="header">
-                <h1>Router</h1>
-            </div>
-
-            <div data-role="content">
-                <div id="addDialogText"></div>
-
-                <div data-role="filedcontain">
-                    <label for="name">Name:</label>
-                    <input type="text" id="NameServer" placeholder="Home">
-                </div>
-
-            </div>
-
-            <div data-role="footer">
-                <a href="#history.back()" data-icon="back" data-role="button" data-rel="back" id="back">Back</a>
-                <a href="#history.back()" data-icon="check" data-role="button" data-rel="back" onClick="save();">Save</a>
-            </div>
-        </div>
-
-        <div data-role="dialog" id="editRouter" data-title="Router">
-
-            <div data-role="header">
-                <h1 id="Router"></h1>
-            </div>
-
-            <div data-role="content">
-                <div id="addDialogText"></div>
-
-                <div id="menu">
-
-                    <a href="#" data-icon="delete" data-role=false class="ui-btn ui-icon-add ui-btn-icon-right ui-corner-all" data-rel="dialog" id="addTask">Remove</a>
-                    
-                    <br />
-
-                </div>
-                <div id="console">
-                    <ul id="data-output"></ul>
-                    <input id="command-input" type="text" onkeypress="sendCommand(event)" />
-                </div>
-
-
-                </div>
-            
-            
-        </div>  
-
-        
-
-       
-        <link rel="stylesheet" href="jquery.mobile-1.4.0.min.css" />
-        <script src="jquery-1.9.1.min.js"></script>
-        <script src="jquery.mobile-1.4.0.min.js"></script>
-       
     </body>
 </html>
