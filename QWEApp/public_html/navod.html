@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <script src="js/Items.js"></script>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+            <div data-role="header">
+                <h1>Návod</h1>
+            </div>
+            
+            <p id="kamen"></p> 
+        
+            <div data-role="footer">
+                <div data-role="controlgroup" data-type="horizontal">
+                    <a href="Menu.html"  data-role="button"><img src="images/1Menu.png"/></a>
+                    <a href="info-postavy.html" data-role="button"><img src="images/2postava.png"/></a>
+                    <a href="index.html" data-role="button"><img src="images/3Mapa.png"/></a>
+                    <a href="inventory.html" data-role="button"><img src="images/4Inventar.png"/></a>
+                    <a href="Craft.html" data-role="button"><img src="images/5Crafting.png"/></a>
+                </div> 
+            </div>
+            
+            
+    <script>
+            var kamen = {
+                sila:10,
+                stamina: 10,
+                opotrebeni: 5
+                };
+
+                var drevo = {
+                sila:12,
+                stamina: 12,
+                opotrebeni: 5
+                };
+
+            var sekera = {
+                sila:20,
+                stamina: 18,
+                opotrebeni: 8
+            };
+
+            var nuz = {
+                sila:15,
+                stamina: 10,
+                opotrebeni: 5
+            };
+
+            document.getElementById("kamen").innerHTML = kamen.sila + '<br>' + kamen.stamina + '<br>' + kamen.opotrebeni;
+    </script>
+            
+    </body>
+    
+    
+
+    
+</html>
