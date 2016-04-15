@@ -16,7 +16,16 @@ and open the template in the editor.
                 <h1>Návod</h1>
             </div>
             
-            <p id="kamen"></p> 
+        
+        
+            <img style="float: left" id="imgKamen" src="images/Drevo.png" alt="Kamen" width="304" height="228"> <p id="kamen"></p> 
+            <p id="kamen"></p>
+            <img style="float: left" id="imgDrevo" src="images/Sekera.png" alt="Kamen" width="304" height="228"> <p id="drevo"></p> 
+            <p id="drevo"></p>
+            <img style="float: left" id="imgSekera" src="images/Drevo.png" alt="Kamen" width="304" height="228"> <p id="sekera"></p> 
+            <p id="sekera"></p>
+            <img style="float: left" id="imgNuz" src="images/Drevo.png" alt="Kamen" width="304" height="228"> <p id="nuz"></p> 
+            <p id="nuz"></p>
         
             <div data-role="footer">
                 <div data-role="controlgroup" data-type="horizontal">
@@ -54,7 +63,10 @@ and open the template in the editor.
                 opotrebeni: 5
             };
 
-            document.getElementById("kamen").innerHTML = kamen.sila + '<br>' + kamen.stamina + '<br>' + kamen.opotrebeni;
+            document.getElementById("kamen").innerHTML = 'Sila: ' + kamen.sila + '<br> Stamina: ' + kamen.stamina + '<br> Opotrebeni: ' + kamen.opotrebeni;
+            document.getElementById("drevo").innerHTML = 'Sila: ' + drevo.sila + '<br> Stamina: ' + drevo.stamina + '<br> Opotrebeni: ' + drevo.opotrebeni;
+            document.getElementById("sekera").innerHTML = 'Sila: ' + sekera.sila + '<br> Stamina: ' + sekera.stamina + '<br> Opotrebeni: ' + sekera.opotrebeni;
+            document.getElementById("nuz").innerHTML = 'Sila: ' + nuz.sila + '<br> Stamina: ' + nuz.stamina + '<br> Opotrebeni: ' + nuz.opotrebeni;
     </script>
             
     </body>
