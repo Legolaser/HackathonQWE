@@ -13,10 +13,10 @@
     </head>
     
     <body>
-        <div data-role="page" data-theme="e" id="pageMap">
+        <div data-role="page" id="pageMap">
 
             <div data-role="footer">
-                <div data-role="controlgroup">
+                <div data-role="controlgroup" data-type="horizontal">
                 <a href="index.html" data-role="button">Yes</a>
                 <a href="index.html" data-role="button">No</a>
                 <a href="index.html" data-role="button">Maybe</a>
@@ -29,12 +29,14 @@
                 
             </div><!--content-->
             <div data-role="footer">
-                <a data-role="button" data-icon="back" data-rel="back" 
-                   href="#pageMap">Back</a>
-                <a data-role="button" data-icon="edit" data-transition="slide" 
-                   href="#pageMap" onclick="prepareEdit()">Edit</a>
-                <a data-role="button" data-icon="delete" data-rel="back" 
-                   href="#pageMap">Delete</a>
+                
+                <div data-role="controlgroup">
+                <a href="index.html" data-role="button">Yes</a>
+                <a href="index.html" data-role="button">No</a>
+                <a href="index.html" data-role="button">Maybe</a>
+                </div> 
+                
+            
             </div><!--footer-->
         </div><!--page-->
     </body>
