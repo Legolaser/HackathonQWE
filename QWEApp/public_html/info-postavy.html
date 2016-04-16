@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <div data-role="header">
+                <h1>Postava - Info</h1>
+        </div>
+        <img style="float: left" src="images/lvl.png" height="60" width="60"/><p id="postavaLevel"></p>
+        <img style="float: left" src="images/2postava.png" height="60" width="60"/><p id="postavaZdravi"></p>
+        <img style="float: left" src="images/Sila.png" height="60" width="60"/><p id="postavaSila"></p>
+        <img style="float: left" src="images/zizen.png" height="60" width="60"/><p id="postavaZizen"></p>
+        <img style="float: left" src="images/hlad.png" height="60" width="60"/><p id="postavaHlad"></p>
+        <img style="float: left" src="images/energy.png" height="60" width="60"/><p id="postavaStamina"></p>
+
+        <script>         
+         document.getElementById("postavaLevel").innerHTML = 'LeveL: ' + postava.level ;
+         document.getElementById("postavaSila").innerHTML =  'Sila: ' + postava.sila ;
+         document.getElementById("postavaZdravi").innerHTML =  'Zdravi: ' + postava.zdravi ;
+         document.getElementById("postavaZizen").innerHTML =  'Zizen: ' + postava.zizen ;
+    
+         document.getElementById("postavaHlad").innerHTML =  'Hlad: ' + postava.hlad ;
+         document.getElementById("postavaStamina").innerHTML =  'Stamina: ' + postava.stamina ;
+         
+         </script>
+         
+         
+         <div data-role="footer">
+                <div data-role="controlgroup" data-type="horizontal">
+                    <a href="Menu.html"  data-role="button"><img src="images/1Menu.png" height="42" width="42"/></a>
+                    <a href="info-postavy.html" data-role="button"><img src="images/2postava.png" height="42" width="42"/></a>
+                    <a href="index.html" data-role="button"><img src="images/3Mapa.png" height="42" width="42" /></a>
+                    <a href="inventory.html" data-role="button"><img src="images/4Inventar.png" height="42" width="42"/></a>
+                    <a href="Craft.html" data-role="button"><img src="images/5Crafting.png" height="42" width="42"/></a>
+                </div> 
+            </div>
+         
+    </body>
+</html>
