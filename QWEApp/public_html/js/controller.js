@@ -26,16 +26,6 @@ $(document).ready(function () {
         });
 
         var player = L.marker([currentLocation.coords.latitude, currentLocation.coords.longitude], {icon: playerIcon}).addTo(mymap);
-
-        var kamenIcon = L.icon({
-            iconUrl: 'images/kamen.png',
-
-            iconSize:     [32, 32], // size of the icon
-            iconAnchor:   [16, 0], // point of the icon which will correspond to marker's location
-            popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
-        });
-        var kamen = L.marker([currentLocation.coords.latitude - 0.001, currentLocation.coords.longitude - 0.007], {icon: kamenIcon}).addTo(mymap);
-        kamen.bindPopup("<b>nazev itemu</b><br><center><button>tezit!</button></center>")
         
         getNearbyPois();
     }
@@ -54,7 +44,7 @@ $(document).ready(function () {
     function getNearbyPois() {
         $.ajax({
             type: "GET",
-            url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+currentLocation.coords.latitude+","+currentLocation.coords.longitude+"&radius=500&type=restaurant&key=AIzaSyDHK-koOjX7luePrU-oz-6t92wZEdWnVTY",
+            url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+currentLocation.coords.latitude+","+currentLocation.coords.longitude+"&radius=500&type=food&key=AIzaSyDHK-koOjX7luePrU-oz-6t92wZEdWnVTY",
             success: function(data) {
                 
                 dataObj = data;
@@ -62,16 +52,16 @@ $(document).ready(function () {
                 for(var i = 0; i < dataObj.results.length; i++) {
                     for (var j = 0; j < dataObj.results[i].types.length; j++) {
                         if(dataObj.results[i].types[j] === "point_of_interest") {
-                            var kamenIcon = L.icon({
-                                iconUrl: 'images/kamen.png',
+                            var truhlaIcon = L.icon({
+                                iconUrl: 'images/truhla.png',
 
                                 iconSize:     [32, 32], // size of the icon
                                 iconAnchor:   [16, 0], // point of the icon which will correspond to marker's location
                                 popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
                             });
                             
-                            var kamen = L.marker([parseFloat(dataObj.results[i].geometry.location.lat), parseFloat(dataObj.results[i].geometry.location.lng)], {icon: kamenIcon}).addTo(mymap);
-//                            kamen.bindPopup("<b>"+dataObj.results[i].name+"</b><br><center><button>tezit!</button></center>")
+                            var truhla = L.marker([parseFloat(dataObj.results[i].geometry.location.lat), parseFloat(dataObj.results[i].geometry.location.lng)], {icon: truhlaIcon}).addTo(mymap);
+                            truhla.bindPopup("<b>"+dataObj.results[i].name+"</b><br><center><button>tezit!</button></center>")
                         }
                     }
                 }
