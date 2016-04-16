@@ -1,0 +1,8 @@
+.custom_listview_img {
+    margin:0px; 
+    padding:0px;
+    background-image: url('images/Item-ramecek.png');
+    background-repeat:no-repeat;
+    background-size:100%;
+    height:58px;
+}
