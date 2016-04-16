@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <script src="js/Items.js"></script>
+       
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,12 +26,21 @@ and open the template in the editor.
             <p id="sekera"></p>
             <img style="float: left" id="imgNuz" src="images/nuz.png" alt="Kamen" height="60" width="60"> <p id="nuz"></p> 
             <p id="nuz"></p>
-            <img style="float: left" id="imgPuska" src="images/nuz.png" alt="Kamen" height="60" width="60"> <p id="puska"></p> 
+            <img style="float: left" id="imgPuska" src="images/Ikona-zbran.png" alt="Kamen" height="60" width="60"> <p id="puska"></p> 
             <p id="puska"></p>
-            <img style="float: left" id="imgPistol" src="images/nuz.png" alt="Kamen" height="60" width="60"> <p id="pistol"></p> 
+            <img style="float: left" id="imgPistol" src="images/pistole.png" alt="Kamen" height="60" width="60"> <p id="pistol"></p> 
             <p id="pistol"></p>
             <img style="float: left" id="imgBoxer" src="images/Boxer.png" alt="Kamen" height="60" width="60"> <p id="boxer"></p> 
             <p id="boxer"></p>
+            <img style="float: left" id="imgCokolada" src="images/cokolada.png" alt="Kamen" height="60" width="60"> <p id="cokolada"></p> 
+            <p id="cokolada"></p>
+            <img style="float: left" id="imgMaso" src="images/maso.png" alt="Kamen" height="60" width="60"> <p id="maso"></p> 
+            <p id="maso"></p>
+            <img style="float: left" id="imgKonzerva" src="images/konzerva.png" alt="Kamen" height="60" width="60"> <p id="konzerva"></p> 
+            <p id="konzerva"></p>
+            <img style="float: left" id="imgMargotka" src="images/tycinka.png" alt="Kamen" height="60" width="60"> <p id="margotka"></p> 
+            <p id="margotka"></p>
+            
         
             <div data-role="footer">
                 <div data-role="controlgroup" data-type="horizontal">
@@ -45,47 +54,7 @@ and open the template in the editor.
             
             
     <script>
-            var kamen = {
-                sila:10,
-                stamina: 10,
-                opotrebeni: 5
-                };
 
-            var drevo = {
-                sila:12,
-                stamina: 12,
-                opotrebeni: 5
-                };
-
-            var sekera = {
-                sila:20,
-                stamina: 18,
-                opotrebeni: 8
-            };
-
-            var nuz = {
-                sila:15,
-                stamina: 10,
-                opotrebeni: 5
-            };
-            
-            var pistol = {
-                sila:15,
-                stamina: 10,
-                opotrebeni: 5
-            };
-            
-            var puska = {
-                sila:15,
-                stamina: 10,
-                opotrebeni: 5
-            };
-            
-            var boxer = {
-                sila:15,
-                stamina: 10,
-                opotrebeni: 5
-            };
 
             document.getElementById("kamen").innerHTML = 'Poskozeni: ' + kamen.sila + '<br> Stamina: ' + kamen.stamina + '<br> Opotrebeni: ' + kamen.opotrebeni;
             document.getElementById("drevo").innerHTML = 'Poskozeni: ' + drevo.sila + '<br> Stamina: ' + drevo.stamina + '<br> Opotrebeni: ' + drevo.opotrebeni;
@@ -94,6 +63,11 @@ and open the template in the editor.
             document.getElementById("pistol").innerHTML = 'Poskozeni: ' + pistol.sila + '<br> Stamina: ' + pistol.stamina + '<br> Opotrebeni: ' + pistol.opotrebeni;
             document.getElementById("puska").innerHTML = 'Poskozeni: ' + puska.sila + '<br> Stamina: ' + puska.stamina + '<br> Opotrebeni: ' + puska.opotrebeni;
             document.getElementById("boxer").innerHTML = 'Poskozeni: ' + boxer.sila + '<br> Stamina: ' + boxer.stamina + '<br> Opotrebeni: ' + boxer.opotrebeni;
+            
+            document.getElementById("cokolada").innerHTML = 'Hlad: +' + cokolada.hlad + '<br> Stamina: ' + cokolada.stamina + '<br> Vaha: ' + cokolada.vaha;
+            document.getElementById("maso").innerHTML = 'Hlad: +' + maso.hlad + '<br> Stamina: ' + maso.stamina + '<br> Vaha: ' + maso.vaha;
+            document.getElementById("konzerva").innerHTML = 'Hlad: +' + konzerva.hlad + '<br> Stamina: ' + konzerva.stamina + '<br> Vaha: ' + konzerva.vaha;
+            document.getElementById("margotka").innerHTML = 'Hlad: +' + margotka.hlad + '<br> Stamina: ' + margotka.stamina + '<br> Vaha: ' + margotka.vaha;
             
     </script>
             

@@ -1,29 +1,126 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+ 
+        <title>Hello World</title>
     </head>
     <body>
-        
-        <div data-role="header">
-                <h1>Inventory</h1>
+
+        <div data-role="page" id="page1" class="app">
+
+            <div data-role="header">
+                <h1>Routers</h1>
+            </div>
+
+            <div data-role="content">
+                <a href="#addDialog" data-icon="add" data-role="button" class="ui-btn ui-icon-add ui-btn-icon-right ui-corner-all" data-rel="dialog" id="addTask">Add</a>
+                <a href="#removeDialog" data-icon="delete" class="ui-btn ui-icon-delete ui-btn-icon-right ui-corner-all" data-role="button" data-rel="dialog" onClick="clearRouter();" id="removeAll">Remove All</a>
+            </div>
+
+            <div data-role="footer">
+                <ul data-role="listview" data-inset="true" data-split-icon="minus" data-split-theme="d" id="routerList" data-filter="true" data-filter-placeholder="Search routers..."></ul>
+
+            </div>
         </div>
-        
-        <div data-role="page" id="pageone">
-            <div data-role="main" class="ui-content">        
-                  <ul data-role="listview">
-                    <li><a href="#"><img src="images/pistole.png" height="42" width="42" /></a></li>
-                    <li><a href="#"><img src="images/nuz.png" height="42" width="42" /></a></li>
-                    <li><a href="#"><img src="images/kamen.png" height="42" width="42" style="float: right" /></a></li>
-                </ul>
-              </div>
-        </div> 
+
+        <div data-role="dialog" id="addDialog" data-title="Router">
+
+            <div data-role="header">
+                <h1>Router</h1>
+            </div>
+
+            <div data-role="content">
+                <div id="addDialogText"></div>
+
+                <div data-role="filedcontain">
+                    <label for="name">Name:</label>
+                    <input type="text" id="NameServer" placeholder="Home">
+                    <label for="name">IP:</label>
+                    <input type="text" id="IPServer" placeholder="192.168.0.7">
+                    <label for="name">Port:</label>
+                    <input type="text" id="PortServer" placeholder="23">
+                </div>
+
+            </div>
+
+            <div data-role="footer">
+                <a href="#history.back()" data-icon="back" data-role="button" data-rel="back" id="back">Back</a>
+                <a href="#history.back()" data-icon="check" data-role="button" data-rel="back" onClick="saveRouter();">Save</a>
+            </div>
+        </div>
+
+        <div data-role="dialog" id="editRouter" data-title="Router">
+
+            <div data-role="header">
+                <h1 id="Router"></h1>
+            </div>
+
+            <div data-role="content">
+                <div id="addDialogText"></div>
+
+
+                
+
+                <div id="menu">
+                    <p id="IP"></p>
+                    <p id="Port"></p>
+
+                    <a href="#" data-icon="add" data-role=false class="ui-btn ui-icon-add ui-btn-icon-right ui-corner-all" data-rel="dialog" onClick="connectToCustomHost();" id="addTask">Connect</a>
+                    <a href="#" data-icon="delete" data-role=false class="ui-btn ui-icon-add ui-btn-icon-right ui-corner-all" data-rel="dialog" id="addTask">Remove</a>
+                    
+                    <br />
+
+                </div>
+                <div id="console">
+                    <ul id="data-output"></ul>
+                    <input id="command-input" type="text" onkeypress="sendCommand(event)" />
+                </div>
+
+
+                </div>
+        </div>  
+
+
+        <!--<div class="app"> 
+            <h1>Sockets for Cordova by <span style="color: black;">{ blocshop }</span></h1>
+
+            <div id="menu">
+                <input id="connect-to-fics" type="button" onclick="connectToHost('freechess.org', 5000)" value="Connect to FICS" />
+
+                <br />
+
+                <h2>Connect to custom server</h2>
+                <input id="host" type="text" onkeypress="sendCommand(event)" placeholder="hostname"/>
+                <input id="port" type="number" onkeypress="sendCommand(event)" placeholder="port"/>
+                <input id="connect-to-custom-srver" type="button" onclick="connectToCustomHost()" value="Connect" />
+            </div>
+            <div id="console">
+                <ul id="data-output"></ul>
+                <input id="command-input" type="text" onkeypress="sendCommand(event)"/>
+            </div>
+        </div>-->
+
+        <script src="js/todo.js"></script>
     </body>
 </html>

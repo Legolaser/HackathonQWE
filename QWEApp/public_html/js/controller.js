@@ -44,4 +44,80 @@ $(document).ready(function () {
     getLocation();
     
 });
+            var postava = {
+                level : 1, 
+                zdravi : 100,
+                sila : 1,
+                stamina : 100,
+                hlad : 100,
+                zizen : 100  
+            }
 
+            var kamen = {
+                sila:10,
+                stamina: 10,
+                opotrebeni: 5
+                };
+
+            var drevo = {
+                sila:12,
+                stamina: 12,
+                opotrebeni: 5
+                };
+
+            var sekera = {
+                sila:20,
+                stamina: 18,
+                opotrebeni: 8
+            };
+
+            var nuz = {
+                sila:15,
+                stamina: 10,
+                opotrebeni: 5
+            };
+            
+            var pistol = {
+                sila:15,
+                stamina: 10,
+                opotrebeni: 5
+            };
+            
+            var puska = {
+                sila:15,
+                stamina: 10,
+                opotrebeni: 5
+            };
+            
+            var boxer = {
+                sila:15,
+                stamina: 10,
+                opotrebeni: 5
+            };
+            
+            var margotka = {
+                hlad: 20,
+                vaha:10,
+                stamina: 10
+            };
+                
+            var konzerva = {
+                hlad: 50,
+                vaha:15,
+                stamina: 10
+            };
+
+            
+            var maso = {
+                hlad: 60,
+                vaha:15,
+                stamina: 10
+            };
+            
+            var cokolada = {
+                hlad: 60,
+                vaha:15,
+                stamina: 10
+            };
+            
+            
