@@ -1,10 +1,13 @@
 
 var currentLocation;
+var nearbyData;
+var mymap;
+
 $(document).ready(function () {
     
     function getMap() {
 //        var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-        var mymap = L.map('mapid').setView([currentLocation.coords.latitude, currentLocation.coords.longitude], 15);
+        mymap = L.map('mapid').setView([currentLocation.coords.latitude, currentLocation.coords.longitude], 15);
 
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
                 maxZoom: 18,
@@ -14,7 +17,7 @@ $(document).ready(function () {
                 id: 'mapbox.streets'
         }).addTo(mymap);
 
-        var greenIcon = L.icon({
+        var playerIcon = L.icon({
             iconUrl: 'images/Bod.png',
 
             iconSize:     [32, 32], // size of the icon
@@ -22,8 +25,17 @@ $(document).ready(function () {
             popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
         });
 
-        var player = L.marker([currentLocation.coords.latitude, currentLocation.coords.longitude], {icon: greenIcon}).addTo(mymap);
-        //player.bindPopup("<b>nazev itemu</b><br>btn pro tezbu/loot")
+        var player = L.marker([currentLocation.coords.latitude, currentLocation.coords.longitude], {icon: playerIcon}).addTo(mymap);
+
+        var kamenIcon = L.icon({
+            iconUrl: 'images/kamen.png',
+
+            iconSize:     [32, 32], // size of the icon
+            iconAnchor:   [16, 0], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+        });
+        var kamen = L.marker([currentLocation.coords.latitude - 0.001, currentLocation.coords.longitude - 0.007], {icon: kamenIcon}).addTo(mymap);
+        kamen.bindPopup("<b>nazev itemu</b><br><center><button>tezit!</button></center>")
         
         getNearbyPois();
     }
@@ -37,8 +49,37 @@ $(document).ready(function () {
         });
     }
     
+    // AIzaSyBT4b--rA-x4piJX_SV0cDr2L9scuONyoc client key
+    // AIzaSyDHK-koOjX7luePrU-oz-6t92wZEdWnVTY server key
     function getNearbyPois() {
-        
+        $.ajax({
+            type: "GET",
+            url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+currentLocation.coords.latitude+","+currentLocation.coords.longitude+"&radius=500&type=restaurant&key=AIzaSyDHK-koOjX7luePrU-oz-6t92wZEdWnVTY",
+            success: function(data) {
+                
+                dataObj = data;
+            
+                for(var i = 0; i < dataObj.results.length; i++) {
+                    for (var j = 0; j < dataObj.results[i].types.length; j++) {
+                        if(dataObj.results[i].types[j] === "point_of_interest") {
+                            var kamenIcon = L.icon({
+                                iconUrl: 'images/kamen.png',
+
+                                iconSize:     [32, 32], // size of the icon
+                                iconAnchor:   [16, 0], // point of the icon which will correspond to marker's location
+                                popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+                            });
+                            
+                            var kamen = L.marker([parseFloat(dataObj.results[i].geometry.location.lat), parseFloat(dataObj.results[i].geometry.location.lng)], {icon: kamenIcon}).addTo(mymap);
+//                            kamen.bindPopup("<b>"+dataObj.results[i].name+"</b><br><center><button>tezit!</button></center>")
+                        }
+                    }
+                }
+            }
+        })
+        .fail(function(err) {
+            alert( "Something went wrong: " + err.responseText );
+        });
     }
     
     getLocation();
