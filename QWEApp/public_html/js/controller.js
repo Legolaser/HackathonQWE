@@ -4,64 +4,73 @@ var nearbyData;
 var mymap;
 
 var inventory = []; //{id, quantity};
-var items = [{name: "kamen", sila: 10, stamina: 10, opotrebeni: 5}, 
+var itemsDB = [{name: "kamen", sila: 10, stamina: 10, opotrebeni: 5}, 
         {name: "drevo", sila: 12, stamina: 12, opotrebeni: 5}, 
         {name: "sekera", sila: 20, stamina: 18, opotrebeni: 8}, 
         {name: "nuz", sila: 15, stamina: 10, opotrebeni: 5},
-        {name: "nuz", sila: 15, stamina: 10, opotrebeni: 5}];
-//var postava = {
-//                level : 1, 
-//                zdravi : 100,
-//                sila : 1,
-//                stamina : 100,
-//                hlad : 100,
-//                zizen : 100  
-//            }
-//            
-//            var pistol = {
-//                sila:15,
-//                stamina: 10,
-//                opotrebeni: 5
-//            };
-//            
-//            var puska = {
-//                sila:15,
-//                stamina: 10,
-//                opotrebeni: 5
-//            };
-//            
-//            var boxer = {
-//                sila:15,
-//                stamina: 10,
-//                opotrebeni: 5
-//            };
-//            
-//            var margotka = {
-//                hlad: 20,
-//                vaha:10,
-//                stamina: 10
-//            };
-//                
-//            var konzerva = {
-//                hlad: 50,
-//                vaha:15,
-//                stamina: 10
-//            };
-//
-//            
-//            var maso = {
-//                hlad: 60,
-//                vaha:15,
-//                stamina: 10
-//            };
-//            
-//            var cokolada = {
-//                hlad: 60,
-//                vaha:15,
-//                stamina: 10
-//            };
+        {name: "kopi", sila: 20, stamina: 10, opotrebeni: 5},
+        {name: "pistol", sila: 15, stamina: 10, opotrebeni: 5}];    //nemenit za behu!
+    
+var recipesDB = [{vysledekId: 2, materialy: [{id: 0, pocet: 1}, {id: 1, pocet: 2}]}, {vysledekId: 4, materialy: [{id: 1, pocet: 2}, {id: 3, pocet: 1}]}]; //{id vysledku, materialy: [id, pocet]}
+var recipes = [{id: 0}, {id: 0}];
+
+
+
+var postava = {
+                level : 1, 
+                zdravi : 100,
+                sila : 1,
+                stamina : 100,
+                hlad : 100,
+                zizen : 100  
+            }
+            
+            var pistol = {
+                sila:15,
+                stamina: 10,
+                opotrebeni: 5
+            };
+            
+            var puska = {
+                sila:15,
+                stamina: 10,
+                opotrebeni: 5
+            };
+            
+            var boxer = {
+                sila:15,
+                stamina: 10,
+                opotrebeni: 5
+            };
+            
+            var margotka = {
+                hlad: 20,
+                vaha:10,
+                stamina: 10
+            };
+                
+            var konzerva = {
+                hlad: 50,
+                vaha:15,
+                stamina: 10
+            };
+
+            
+            var maso = {
+                hlad: 60,
+                vaha:15,
+                stamina: 10
+            };
+            
+            var cokolada = {
+                hlad: 60,
+                vaha:15,
+                stamina: 10
+            };
 
 $(document).ready(function () {
+    
+    inventory.push({id: 0, pocet: 1}, {id: 1, pocet: 2});
     
     function getMap() {
 //        var mymap = L.map('mapid').setView([51.505, -0.09], 13);
@@ -184,5 +193,23 @@ $(document).ready(function () {
     getLocation();
     
 });
-            
-            
+
+var refreshCraftingList = function() {
+    var druhyRadek;
+    var actualItemCount = 0;
+    for (var i = 0; i < recipes.length; i++){
+        for (var j = 0; j < recipesDB[recipes[i].id].materialy.length; j++) {
+            actualItemCount = 0;
+            for (var k = 0; k < inventory.length; k++) {
+                if (recipesDB[recipes[i].id].materialy[j].id === inventory[k].id) {
+                    actualItemCount = inventory[k].pocet;
+                }
+            }
+            druhyRadek = itemsDB[recipesDB[recipes[i].id].materialy[j].id].name +": "+ actualItemCount +"/"+recipesDB[recipes[i].id].materialy[j].pocet;
+        }
+        $("#listCraft").append('<li><a href="index.html" class="custom_listview_img"><img src="images/'+itemsDB[recipesDB[recipes[i].id].vysledekId].name+'.png" height="80" width="80" /><b> '+itemsDB[recipesDB[recipes[i].id].vysledekId].name+' </b><br> '+druhyRadek+' </a></li>');
+    }
+    $("#listCraft").listview().listview("refresh");
+};
+
+           
