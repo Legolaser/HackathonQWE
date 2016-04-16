@@ -3,6 +3,64 @@ var currentLocation;
 var nearbyData;
 var mymap;
 
+var inventory = []; //{id, quantity};
+var items = [{name: "kamen", sila: 10, stamina: 10, opotrebeni: 5}, 
+        {name: "drevo", sila: 12, stamina: 12, opotrebeni: 5}, 
+        {name: "sekera", sila: 20, stamina: 18, opotrebeni: 8}, 
+        {name: "nuz", sila: 15, stamina: 10, opotrebeni: 5},
+        {name: "nuz", sila: 15, stamina: 10, opotrebeni: 5}];
+//var postava = {
+//                level : 1, 
+//                zdravi : 100,
+//                sila : 1,
+//                stamina : 100,
+//                hlad : 100,
+//                zizen : 100  
+//            }
+//            
+//            var pistol = {
+//                sila:15,
+//                stamina: 10,
+//                opotrebeni: 5
+//            };
+//            
+//            var puska = {
+//                sila:15,
+//                stamina: 10,
+//                opotrebeni: 5
+//            };
+//            
+//            var boxer = {
+//                sila:15,
+//                stamina: 10,
+//                opotrebeni: 5
+//            };
+//            
+//            var margotka = {
+//                hlad: 20,
+//                vaha:10,
+//                stamina: 10
+//            };
+//                
+//            var konzerva = {
+//                hlad: 50,
+//                vaha:15,
+//                stamina: 10
+//            };
+//
+//            
+//            var maso = {
+//                hlad: 60,
+//                vaha:15,
+//                stamina: 10
+//            };
+//            
+//            var cokolada = {
+//                hlad: 60,
+//                vaha:15,
+//                stamina: 10
+//            };
+
 $(document).ready(function () {
     
     function getMap() {
@@ -20,7 +78,7 @@ $(document).ready(function () {
         var playerIcon = L.icon({
             iconUrl: 'images/Bod.png',
 
-            iconSize:     [32, 32], // size of the icon
+            iconSize:     [32 * 0.75, 32 * 0.75], // size of the icon
             iconAnchor:   [16, 0], // point of the icon which will correspond to marker's location
             popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
         });
@@ -44,24 +102,75 @@ $(document).ready(function () {
     function getNearbyPois() {
         $.ajax({
             type: "GET",
-            url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+currentLocation.coords.latitude+","+currentLocation.coords.longitude+"&radius=500&type=food&key=AIzaSyDHK-koOjX7luePrU-oz-6t92wZEdWnVTY",
+            url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+currentLocation.coords.latitude+","+currentLocation.coords.longitude+"&radius=1000&type=point_of_interest&key=AIzaSyDHK-koOjX7luePrU-oz-6t92wZEdWnVTY",
             success: function(data) {
                 
                 dataObj = data;
-            
+                
+                dataObj.results.push({types: ["park"], name: "random strom", geometry: {location: {lat: 49.833, lng: 18.1565}}});
+                dataObj.results.push({types: ["park"], name: "random strom", geometry: {location: {lat: 49.835, lng: 18.155}}});
+                dataObj.results.push({types: ["park"], name: "random strom", geometry: {location: {lat: 49.836, lng: 18.157}}});
+                
+                dataObj.results.push({types: ["stone"], name: "random stone", geometry: {location: {lat: 49.833, lng: 18.153}}});
+                
                 for(var i = 0; i < dataObj.results.length; i++) {
                     for (var j = 0; j < dataObj.results[i].types.length; j++) {
-                        if(dataObj.results[i].types[j] === "point_of_interest") {
+                        //point_of_interest
+                        if(dataObj.results[i].types[j] === "library" || dataObj.results[i].types[j] === "university" || dataObj.results[i].types[j] === "school") {
                             var truhlaIcon = L.icon({
-                                iconUrl: 'images/truhla.png',
-
+                                iconUrl: 'images/Holy Bible-48.png',
                                 iconSize:     [32, 32], // size of the icon
                                 iconAnchor:   [16, 0], // point of the icon which will correspond to marker's location
                                 popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
                             });
                             
                             var truhla = L.marker([parseFloat(dataObj.results[i].geometry.location.lat), parseFloat(dataObj.results[i].geometry.location.lng)], {icon: truhlaIcon}).addTo(mymap);
-                            truhla.bindPopup("<b>"+dataObj.results[i].name+"</b><br><center><button>tezit!</button></center>")
+                            truhla.bindPopup("<b>"+dataObj.results[i].name+"</b><br>"+JSON.stringify(dataObj.results[i].types)+"<br><center><button>Naučit recept</button></center>")
+                        }
+                        else if(dataObj.results[i].types[j] === "park") {
+                            var truhlaIcon = L.icon({
+                                iconUrl: 'images/Deciduous Tree-48.png',
+                                iconSize:     [32, 32], // size of the icon
+                                iconAnchor:   [16, 0], // point of the icon which will correspond to marker's location
+                                popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+                            });
+                            
+                            var truhla = L.marker([parseFloat(dataObj.results[i].geometry.location.lat), parseFloat(dataObj.results[i].geometry.location.lng)], {icon: truhlaIcon}).addTo(mymap);
+                            truhla.bindPopup("<b>"+dataObj.results[i].name+"</b><br>"+JSON.stringify(dataObj.results[i].types)+"<br><center><button>tezit!</button></center>")
+                        }
+                        else if(dataObj.results[i].types[j] === "stone") {
+                            var truhlaIcon = L.icon({
+                                iconUrl: 'images/Coal-48.png',
+                                iconSize:     [32, 32], // size of the icon
+                                iconAnchor:   [16, 0], // point of the icon which will correspond to marker's location
+                                popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+                            });
+                            
+                            var truhla = L.marker([parseFloat(dataObj.results[i].geometry.location.lat), parseFloat(dataObj.results[i].geometry.location.lng)], {icon: truhlaIcon}).addTo(mymap);
+                            //truhla.bindPopup("<b>"+dataObj.results[i].name+"</b><br>"+JSON.stringify(dataObj.results[i].types)+"<br><center><button>tezit!</button></center>")
+                            truhla.bindPopup("<b>"+dataObj.results[i].name+"</b><br>"+JSON.stringify(dataObj.results[i].types)+"<br><center><button>tezit!</button></center>")
+                        }
+                        else if(dataObj.results[i].types[j] === "food" || dataObj.results[i].types[j] === "bar") {
+                            var truhlaIcon = L.icon({
+                                iconUrl: 'images/Water-48.png',
+                                iconSize:     [32, 32], // size of the icon
+                                iconAnchor:   [16, 0], // point of the icon which will correspond to marker's location
+                                popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+                            });
+                            
+                            var truhla = L.marker([parseFloat(dataObj.results[i].geometry.location.lat), parseFloat(dataObj.results[i].geometry.location.lng)], {icon: truhlaIcon}).addTo(mymap);
+                            truhla.bindPopup("<b>"+dataObj.results[i].name+"</b><br>"+JSON.stringify(dataObj.results[i].types)+"<br><center><button>Doplnit zásoby</button></center>")
+                        }
+                        else if(dataObj.results[i].types[j] === "shop" || dataObj.results[i].types[j] === "health") {
+                            var truhlaIcon = L.icon({
+                                iconUrl: 'images/truhla.png',
+                                iconSize:     [32, 32], // size of the icon
+                                iconAnchor:   [16, 0], // point of the icon which will correspond to marker's location
+                                popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+                            });
+                            
+                            var truhla = L.marker([parseFloat(dataObj.results[i].geometry.location.lat), parseFloat(dataObj.results[i].geometry.location.lng)], {icon: truhlaIcon}).addTo(mymap);
+                            truhla.bindPopup("<b>"+dataObj.results[i].name+"</b><br>"+JSON.stringify(dataObj.results[i].types)+"<br><center><button>Prohledat</button></center>")
                         }
                     }
                 }
@@ -75,80 +184,5 @@ $(document).ready(function () {
     getLocation();
     
 });
-            var postava = {
-                level : 1, 
-                zdravi : 100,
-                sila : 1,
-                stamina : 100,
-                hlad : 100,
-                zizen : 100  
-            }
-
-            var kamen = {
-                sila:10,
-                stamina: 10,
-                opotrebeni: 5
-                };
-
-            var drevo = {
-                sila:12,
-                stamina: 12,
-                opotrebeni: 5
-                };
-
-            var sekera = {
-                sila:20,
-                stamina: 18,
-                opotrebeni: 8
-            };
-
-            var nuz = {
-                sila:15,
-                stamina: 10,
-                opotrebeni: 5
-            };
-            
-            var pistol = {
-                sila:15,
-                stamina: 10,
-                opotrebeni: 5
-            };
-            
-            var puska = {
-                sila:15,
-                stamina: 10,
-                opotrebeni: 5
-            };
-            
-            var boxer = {
-                sila:15,
-                stamina: 10,
-                opotrebeni: 5
-            };
-            
-            var margotka = {
-                hlad: 20,
-                vaha:10,
-                stamina: 10
-            };
-                
-            var konzerva = {
-                hlad: 50,
-                vaha:15,
-                stamina: 10
-            };
-
-            
-            var maso = {
-                hlad: 60,
-                vaha:15,
-                stamina: 10
-            };
-            
-            var cokolada = {
-                hlad: 60,
-                vaha:15,
-                stamina: 10
-            };
             
             
